@@ -1,0 +1,59 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    border-width: 1px;
+    border-color: black;
+    border-style: solid;
+}
+
+.logo-container {
+    margin: 2px 2px;
+}
+
+.logo {
+    width: 80px;
+}
+
+.nav-items {
+    margin: 10px 10px;
+}
+
+.nav-items>ul {
+    display: flex;
+    list-style-type: none;
+    margin: 10px 10px;
+    font-size: larger;
+}
+
+.nav-items>ul>li {
+    margin: 10px;
+    padding: 0px 10px;
+}
+
+.search {
+    margin: 10px;
+}
+
+.res-card {
+    padding: 5px;
+    width: 250px;
+    margin: 5px;
+}
+
+.res-card:hover {
+    cursor: pointer;
+    border: 1px solid black;
+}
+
+.res-logo {
+    width: 100%;
+}
+
+.res-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.filter {
+    margin: 10px;
+}
