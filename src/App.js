@@ -8,6 +8,7 @@ import About from "./components/About";
 import Error from "./components/Error";
 import Footer from "./components/Footer";
 import Contact from "./components/Contact";
+import RestaurantMenu from "./components/RestaurantMenu";
 
 const AppLayout = () => {
   //console.log(<Body />); this is an object which is basically Virtual DOM
@@ -37,6 +38,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact />,
+      },
+      {
+        path: "/restaurants/:resId",
+        element: <RestaurantMenu />,
       },
     ],
   },

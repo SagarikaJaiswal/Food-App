@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import "../../index.css";
 import resList from "../utils/mockData";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 const Body = () => {
   //Local state variable-super powerful variable
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
@@ -41,14 +42,14 @@ const Body = () => {
   //function for fetching the data
   async function getRestaurants() {
     const data = await fetch(
-      "https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=26.8466937&lng=80.94616599999999&page_type=DESKTOP_WEB_LISTING"
+      "https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING"
     );
     const dataObject = await data.json();
-    console.log(dataObject);
+    //console.log(dataObject);
     setListOfRestaurants(dataObject?.data?.cards[2]?.data?.data?.cards);
     setFilteredRestaurants(dataObject?.data?.cards[2]?.data?.data?.cards);
   }
-  console.log("RENDER");
+  // console.log("RENDER");
   //if(listOfRestaurants)
 
   return listOfRestaurants?.length == 0 ? (
@@ -81,7 +82,12 @@ const Body = () => {
       </div>
       <div className="res-container">
         {filteredRestaurants.map((restaurant) => (
-          <RestaurantCard key={restaurant.data.id} resData={restaurant} />
+          <Link
+            to={"/restaurants/" + restaurant.data.id}
+            key={restaurant.data.id}
+          >
+            <RestaurantCard resData={restaurant} />
+          </Link>
         ))}
       </div>
     </div>

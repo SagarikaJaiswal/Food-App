@@ -1,0 +1,26 @@
+-> Why do we use state?
+   We use state to keep our UI in sync with the data.
+   States are used beacuse react keep track of state variable.
+
+   ## useState
+   ===============
+   1)React gives us the way to crate the local state of the functional component
+   2)useState should not be called inside the if statement, for loop and outside the functional component
+
+--> React is fast as it provides faster DOM manipulation(Virtual DOM). faster DOM manipulation is possible due to Diff algorithm.
+--> Whenever the state of any local variable changes react re-renders the whole component, it quickly refreshes the whole component.
+
+--> It is not a good practice to call an API inside the component because everytime the stateof any variable changes the component refreshes,
+this will lead to unnecessay calling of the API multiple times increasing the latency.
+
+--> IMP POINT - A component renders in two cases-
+                  1) when the states change.
+                  2) when the props change.
+
+--> useEffect 
+    1) It is a hook.
+    2)This hook takes in two parameters, a callback and a dependency array (dependency array contains the state variable on whose state change the callback is called)
+    3)This hook is used when we do not want to run a piece of code everytime the component re-renders.
+    4) in case of empty dependency array - the callback is called once after initial render
+       in case of any dependency - once after initial render + everytime after re-render(i.e when searchText changes)
+    5) in case we don't pass the second argument then the useEffect is called after every Render
