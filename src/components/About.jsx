@@ -14,26 +14,18 @@ import UserClass from "./UserClass";
 class About extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      count1: 0,
-      count2: 0,
-    };
+    console.log("Parent Constructor");
   }
-
+  componentDidMount() {
+    console.log("Parent componentDidMount");
+  }
   render() {
+    console.log("Parent render");
     return (
       <>
-        <h1>{this.state.count1}</h1>
-        <button
-          onClick={() =>
-            this.setState({
-              count1: this.state.count1 + 1,
-            })
-          }
-        >
-          Increase
-        </button>
+        <h1>About Us</h1>
+        <UserClass name={"First"} title={"SDE"} />
+        <UserClass name={"Second"} title={"SDE"} />
       </>
     );
   }
