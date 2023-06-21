@@ -46,8 +46,8 @@ const Body = () => {
     );
     const dataObject = await data.json();
     //console.log(dataObject);
-    setListOfRestaurants(dataObject?.data?.cards[2]?.data?.data?.cards);
-    setFilteredRestaurants(dataObject?.data?.cards[2]?.data?.data?.cards);
+    setListOfRestaurants(dataObject?.data?.cards?.[2]?.data?.data?.cards);
+    setFilteredRestaurants(dataObject?.data?.cards?.[2]?.data?.data?.cards);
   }
   // console.log("RENDER");
   //if(listOfRestaurants)
