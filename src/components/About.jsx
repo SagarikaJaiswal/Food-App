@@ -1,5 +1,6 @@
 import React from "react";
 import UserClass from "./UserClass";
+import UserFunction from "./UserFunction";
 
 // const About = () => {
 //   return (
@@ -24,8 +25,8 @@ class About extends React.Component {
     return (
       <>
         <h1>About Us</h1>
-        <UserClass name={"First"} title={"SDE"} />
-        <UserClass name={"Second"} title={"SDE"} />
+        {/* <UserClass name={"First"} title={"SDE"} /> */}
+        <UserFunction />
       </>
     );
   }
