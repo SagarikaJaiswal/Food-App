@@ -4,6 +4,7 @@ import "../../index.css";
 import resList from "../utils/mockData";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 const Body = () => {
   //Local state variable-super powerful variable
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
@@ -34,6 +35,7 @@ const Body = () => {
   //   },
   // ];
   const [searchText, setSearchText] = useState("");
+  const onlineStatus = useOnlineStatus();
 
   useEffect(() => {
     getRestaurants();
@@ -51,6 +53,9 @@ const Body = () => {
   }
   // console.log("RENDER");
   //if(listOfRestaurants)
+  if (onlineStatus === false) {
+    return <h1>Please check your internet connection!!!!</h1>;
+  }
 
   return listOfRestaurants?.length == 0 ? (
     <Shimmer />
