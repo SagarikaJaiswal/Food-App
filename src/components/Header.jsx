@@ -28,6 +28,7 @@ const Header = () => {
             <Link to="/contact">Contact Us</Link>
           </li>
           <li>Cart</li>
+          <li><Link to="/grocery">Grocery</Link></li>
         </ul>
       </div>
       {logInState ? (

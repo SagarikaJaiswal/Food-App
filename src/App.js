@@ -1,4 +1,4 @@
-import React from "react";
+import React,{lazy,Suspense} from "react";
 import ReactDOM from "react-dom/client";
 import "../index.css";
 import Header from "./components/Header";
@@ -9,7 +9,9 @@ import Error from "./components/Error";
 import Footer from "./components/Footer";
 import Contact from "./components/Contact";
 import RestaurantMenu from "./components/RestaurantMenu";
+//import Grocery from "./components/Grocery";
 
+const Grocery = lazy(()=> import("./components/Grocery"))
 const AppLayout = () => {
   //console.log(<Body />); this is an object which is basically Virtual DOM
   return (
@@ -42,6 +44,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/restaurants/:resId",
         element: <RestaurantMenu />,
+      },
+      {
+        path: "/grocery",
+        element: <Suspense fallback={<h1>Loading...</h1>}><Grocery/></Suspense>,
       },
     ],
   },
