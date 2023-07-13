@@ -9,31 +9,6 @@ const Body = () => {
   //Local state variable-super powerful variable
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
-  //Normal JS variable
-  // const listOfRestaurantsJS = [
-  //   {
-  //     data: {
-  //       id: "635227",
-  //       name: "Bakingo",
-  //       cloudinaryImageId: "9fc6c247e09254670265953d03701280",
-  //       cuisines: ["Bakery", "Desserts", "Beverages", "Snacks"],
-  //       costForTwo: 29900,
-  //       deliveryTime: 22,
-  //       avgRating: "3.4",
-  //     },
-  //   },
-  //   {
-  //     data: {
-  //       id: "635228",
-  //       name: "CheeseCakes",
-  //       cloudinaryImageId: "9fc6c247e09254670265953d03701280",
-  //       cuisines: ["Bakery", "Desserts", "Beverages", "Snacks"],
-  //       costForTwo: 29900,
-  //       deliveryTime: 22,
-  //       avgRating: "4.5",
-  //     },
-  //   },
-  // ];
   const [searchText, setSearchText] = useState("");
   const onlineStatus = useOnlineStatus();
 
@@ -61,17 +36,17 @@ const Body = () => {
     <Shimmer />
   ) : (
     <div className="body">
-      <div className="search-container">
+      <div className="search-container flex my-4 justify-center">
         <input
           type="text"
-          className="search-input"
+          className="search-input border border-black mx-4"
           placeholder="Search"
           value={searchText}
           onChange={(e) => setSearchText(e.target.value)}
         />
         <div className="filter">
           <button
-            className="filter-btn"
+            className="filter-btn bg-green-200 p-2 rounded-lg"
             onClick={() => {
               const filteredList = listOfRestaurants.filter((res) =>
                 res?.data?.name
@@ -85,7 +60,7 @@ const Body = () => {
           </button>
         </div>
       </div>
-      <div className="res-container">
+      <div className="res-container flex flex-wrap">
         {filteredRestaurants.map((restaurant) => (
           <Link
             to={"/restaurants/" + restaurant.data.id}
