@@ -1,4 +1,4 @@
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { withPromotedLabel } from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import "../../index.css";
 import resList from "../utils/mockData";
@@ -11,7 +11,8 @@ const Body = () => {
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [searchText, setSearchText] = useState("");
   const onlineStatus = useOnlineStatus();
-
+  // console.log(listOfRestaurants);
+  const RestaurantCardWithLabel = withPromotedLabel(RestaurantCard);
   useEffect(() => {
     getRestaurants();
   }, []);
@@ -66,7 +67,11 @@ const Body = () => {
             to={"/restaurants/" + restaurant.data.id}
             key={restaurant.data.id}
           >
-            <RestaurantCard resData={restaurant} />
+            {restaurant.data.promoted ? (
+              <RestaurantCardWithLabel resData={restaurant} />
+            ) : (
+              <RestaurantCard resData={restaurant} />
+            )}
           </Link>
         ))}
       </div>
