@@ -2,10 +2,11 @@ import { useParams } from "react-router-dom";
 import Shimmer from "./Shimmer";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
 import RestaurantCategory from "./RestaurantCategory";
+import { useState } from "react";
 const RestaurantMenu = () => {
   const { resId } = useParams();
   const resInfo = useRestaurantMenu(resId);
-
+  const [ItemIndex, setItemIndex] = useState(null);
   //const { name } = resInfo?.cards[0]?.card?.card?.info;
   if (resInfo === null) return <Shimmer />;
   const {
@@ -36,8 +37,15 @@ const RestaurantMenu = () => {
         </p>
         <div className="m-auto accordion">
           {itemCategory.map((c, index) => {
+            //controlled componenet
             return (
-              <RestaurantCategory key={index} data={c}></RestaurantCategory>
+              <RestaurantCategory
+                key={index}
+                data={c}
+                isActive={ItemIndex === index ? true : false}
+                showItems={ItemIndex === index ? true : false}
+                setItemIndex={() => setItemIndex(index)}
+              ></RestaurantCategory>
             );
           })}
         </div>
