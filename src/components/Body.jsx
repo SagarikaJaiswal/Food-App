@@ -26,8 +26,14 @@ const Body = () => {
     );
     const dataObject = await data.json();
     //console.log(dataObject);
-    setListOfRestaurants(dataObject?.data?.cards?.[2]?.data?.data?.cards);
-    setFilteredRestaurants(dataObject?.data?.cards?.[2]?.data?.data?.cards);
+    setListOfRestaurants(
+      dataObject?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants
+    );
+    setFilteredRestaurants(
+      dataObject?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants
+    );
   }
   // console.log("RENDER");
   //if(listOfRestaurants)
@@ -76,10 +82,10 @@ const Body = () => {
       <div className="res-container flex flex-wrap">
         {filteredRestaurants.map((restaurant) => (
           <Link
-            to={"/restaurants/" + restaurant.data.id}
-            key={restaurant.data.id}
+            to={"/restaurants/" + restaurant?.info.id}
+            key={restaurant?.info.id}
           >
-            {restaurant.data.promoted ? (
+            {restaurant?.info.promoted ? (
               <RestaurantCardWithLabel resData={restaurant} />
             ) : (
               <RestaurantCard resData={restaurant} />

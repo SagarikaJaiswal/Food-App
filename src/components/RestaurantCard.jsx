@@ -9,7 +9,7 @@ const RestaurantCard = ({ resData }) => {
     costForTwo,
     deliveryTime,
     cloudinaryImageId,
-  } = resData?.data;
+  } = resData?.info;
   return (
     <div className="res-card m-4 p-4 w-[250px] bg-gray-200 rounded-lg hover:bg-gray-300 flex flex-col flex-wrap">
       <img
