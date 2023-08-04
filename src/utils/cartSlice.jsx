@@ -7,13 +7,17 @@ const cartSlice = createSlice({
   },
   reducers: {
     addItem: (state, action) => {
+      // RTK uses immer library bts
       state.items.push(action.payload);
     },
     removeItem: (state) => {
       state.items.pop();
     },
+    /// original state: {items: ['pizza']}
     clearCart: (state) => {
+      // RTK - either mutates existing state or returns new state
       state.items.length = 0;
+      /// return {items: []}
     },
   },
 });
